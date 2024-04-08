@@ -1,0 +1,169 @@
+[gd_scene load_steps=5 format=3 uid="uid://ds3g65fim75uk"]
+
+[ext_resource type="Script" path="res://Menus/settings_menu.gd" id="1_pkcrv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ute6"]
+bg_color = Color(0, 0, 0, 0.396078)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v1pkg"]
+bg_color = Color(0.309804, 0.309804, 0.309804, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nyix4"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="SettingsMenu" type="CanvasLayer"]
+process_mode = 2
+script = ExtResource("1_pkcrv")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8ute6")
+
+[node name="BackgroundPanel" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -288.0
+offset_top = -196.0
+offset_right = 288.0
+offset_bottom = 196.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v1pkg")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/BackgroundPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 35
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/BackgroundPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="Heading" type="Label" parent="Panel/BackgroundPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/BackgroundPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="GridContainer" type="GridContainer" parent="Panel/BackgroundPanel/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="MusicVol" type="Label" parent="Panel/BackgroundPanel/MarginContainer/VBoxContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+text = "Music Volume"
+
+[node name="MusicSlider" type="HSlider" parent="Panel/BackgroundPanel/MarginContainer/VBoxContainer/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 2.0
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="SFXVol" type="Label" parent="Panel/BackgroundPanel/MarginContainer/VBoxContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+text = "SFX Volume"
+
+[node name="SFXSlider" type="HSlider" parent="Panel/BackgroundPanel/MarginContainer/VBoxContainer/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 2.0
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="Language" type="Label" parent="Panel/BackgroundPanel/MarginContainer/VBoxContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+text = "Language
+"
+
+[node name="LanguageDropdown" type="OptionButton" parent="Panel/BackgroundPanel/MarginContainer/VBoxContainer/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+item_count = 2
+selected = 0
+popup/item_0/text = "English"
+popup/item_0/id = 0
+popup/item_1/text = "Spanish (Latin America)"
+popup/item_1/id = 1
+
+[node name="Panel" type="Panel" parent="Panel/BackgroundPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 25)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nyix4")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/BackgroundPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="CloseButton" type="Button" parent="Panel/BackgroundPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 2.08165e-12)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Close"
+
+[node name="SaveButton" type="Button" parent="Panel/BackgroundPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 2.08165e-12)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Save Game"
+
+[node name="QuitButton" type="Button" parent="Panel/BackgroundPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 2.08165e-12)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Quit"
+
+[connection signal="value_changed" from="Panel/BackgroundPanel/MarginContainer/VBoxContainer/MarginContainer/GridContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="Panel/BackgroundPanel/MarginContainer/VBoxContainer/MarginContainer/GridContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="item_selected" from="Panel/BackgroundPanel/MarginContainer/VBoxContainer/MarginContainer/GridContainer/LanguageDropdown" to="." method="_on_language_dropdown_item_selected"]
+[connection signal="pressed" from="Panel/BackgroundPanel/MarginContainer/VBoxContainer/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="Panel/BackgroundPanel/MarginContainer/VBoxContainer/HBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="Panel/BackgroundPanel/MarginContainer/VBoxContainer/HBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

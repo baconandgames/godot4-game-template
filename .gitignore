@@ -1,0 +1,14 @@
+
+# Godot-specific ignores
+.import/
+export.cfg
+export_presets.cfg
+*.import
+.godot/
+
+# Mono-specific ignores
+.mono/
+data_*/
+addons/Todo_Manager/todo.cfg
+*.csproj
+*.sln

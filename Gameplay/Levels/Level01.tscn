@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dakphwh8q4546"]
+
+[ext_resource type="Script" path="res://Gameplay/Levels/Level01.gd" id="1_facif"]
+[ext_resource type="Texture2D" uid="uid://b26pff71s3o5f" path="res://icon.svg" id="1_wne7b"]
+
+[node name="Level01" type="Node2D"]
+script = ExtResource("1_facif")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(93, 89)
+texture = ExtResource("1_wne7b")
