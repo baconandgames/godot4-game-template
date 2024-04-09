@@ -14,17 +14,16 @@ var settings_menu = null
 func _ready():
 	user_prefs = UserPrefs.load_or_create()
 	
-	# temp - need to extend JSONLoader to make a save data wrapper
+	# SaveData extends JSONLoader to add methods to read and write data specifically for this game
+	# customize SaveData to fit your game. What's in this repo is just a very basic example.
 	save = SaveData.new()
 	save.load_or_create()
-	#print(save.read_level_progress("level0"))
-	#save.update_level_progress("level0", 5)
 	
-	# todo - need to implement Resource saver option
+	# todo - will implement Resource saver option in future versions
 	#user_save = UserSave.load_or_create() as UserSave
 	#user_save.save()
 	
-	# temp - I'd rather have a more central place for this since this is duplicated code, will do for now
+	# temp - Will probably relocate to an audio-specfiic class in future versions
 	AudioServer.set_bus_volume_db(SFX_BUS_ID, linear_to_db(user_prefs.sfx_volume))
 	AudioServer.set_bus_mute(SFX_BUS_ID, user_prefs.sfx_volume < .05)
 	AudioServer.set_bus_volume_db(MUSIC_BUS_ID, linear_to_db(user_prefs.music_volume))

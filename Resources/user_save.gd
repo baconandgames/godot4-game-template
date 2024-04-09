@@ -1,6 +1,9 @@
 class_name UserSave extends Resource
 
-const USER_SAVE_PATH:String = "user://user_save_temp3.tres"
+## This script is a placeholder for a forthcoming Resource saver. At present
+## this template has only implemented saving/loading json files.
+
+const USER_SAVE_PATH:String = "user://user_save.tres"
 #const FIRST_LEVEL_ID:String = "level02"
 #const NULL_VECTOR:Vector2 = Vector2(-50000,-50000)
 #
@@ -10,20 +13,20 @@ const USER_SAVE_PATH:String = "user://user_save_temp3.tres"
 #@export var last_level_id:String
 
 
-func save() -> void:
-	#print("save ",player_position)
-	ResourceSaver.save(self, USER_SAVE_PATH)
-	
-static func load_or_create() -> UserSave:
-	var res:UserSave
-	if FileAccess.file_exists(USER_SAVE_PATH):
-		print("file exists, load it")
-		res =  load(USER_SAVE_PATH) as UserSave
-	else:
-		print("file doesn't exist, create one")
-		res = UserSave.new()
-		#res.player_position = NULL_VECTOR
-	return res
+#func save() -> void:
+	##print("save ",player_position)
+	#ResourceSaver.save(self, USER_SAVE_PATH)
+	#
+#static func load_or_create() -> UserSave:
+	#var res:UserSave
+	#if FileAccess.file_exists(USER_SAVE_PATH):
+		#print("file exists, load it")
+		#res =  load(USER_SAVE_PATH) as UserSave
+	#else:
+		#print("file doesn't exist, create one")
+		#res = UserSave.new()
+		##res.player_position = NULL_VECTOR
+	#return res
 	#
 #func get_room_save(level_id:String) -> RoomSave:
 	#var room_save:RoomSave = null

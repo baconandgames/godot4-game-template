@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 Globals="*res://Autoloads/Globals.gd"
-SceneRegistry="*res://Autoloads/SceneRegistry.gd"
 SceneManager="*res://Autoloads/SceneManager.gd"
 
 [display]

@@ -1,6 +1,10 @@
 class_name JSONLoader extends Node
 # https://docs.godotengine.org/en/stable/classes/class_json.html
 
+# todo - support for multiple save files w/ naming, deleting, etc, this one is low on my priority list
+# because most of the games I make aren't expected to be played and shared among multiple people on the 
+# same computer at the same time
+
 const save_path: String = "user://user_save.json"
 const default_save_file: String = "res://Resources/default_save_file.json"
 var data = {}

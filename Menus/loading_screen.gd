@@ -11,8 +11,6 @@ signal transition_in_complete
 @onready var timer: Timer = $Timer
 
 var starting_animation_name:String
-#temp hack to keep loading screen always on top
-var keep_on_top: bool = true
 
 ## hides progress bar on startup, we'll reveal it later if loading has taken long
 ## enough that it's worth showing. The alternative is that when something loads
@@ -20,14 +18,6 @@ var keep_on_top: bool = true
 func _ready() -> void:
 	progress_bar.visible = false
 	pass
-
-# this is made redundant by the optional loading_canvass but I'll leave it here FYI 
-#func _process(_delta: float) -> void:
-	#if keep_on_top:
-		#var parent = get_parent()
-		#var child_count:int = parent.get_child_count()
-		#if  child_count - 1 != get_index() - 1:
-			#parent.move_child(self, child_count - 1)
 
 ## called by SceneManager to start the "in" transition. 
 func start_transition(animation_name:String) -> void: 
