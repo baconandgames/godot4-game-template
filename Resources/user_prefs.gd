@@ -4,6 +4,9 @@ class_name UserPrefs extends Resource
 @export_range(0,1,.05) var sfx_volume: float = 1.0
 @export var use_smooth_movement:bool = true
 @export var language:int = 0
+@export var window_mode:int = 0
+@export var window_resolution: Vector2i = Vector2i(960, 540)
+@export var window_monitor: int = 0
 
 const USER_PREFS_PATH:String = "user://user_prefs.tres"
 
