@@ -1,5 +1,15 @@
 class_name DisplayManager extends Object
 
+# available window resolutions
+# perhaps this should be an export on a node for easier management
+static var window_resolutions: Array[Vector2i] = [
+	Vector2i(960,540),
+	Vector2i(1280,720),
+	Vector2i(1600,900),
+	Vector2i(1920,1080),
+	Vector2i(2560,1440),
+]
+
 func _init():
 	restore_window()
 

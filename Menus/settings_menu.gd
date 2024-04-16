@@ -3,13 +3,6 @@ class_name SettingsMenu extends CanvasLayer
 # opening this menu pauses the game, so you don't have to worry about blocking input
 # from anything underneath it
 
-# todo - implement fullscreen / window size dropdown Ex:
-#	640×360
-#	960×540
-#	1920×1080
-#	1280×720 with a scaling factor of 2.
-
-
 signal language_changed(language: String)
 
 @onready var window_mode_dropdown:OptionButton = %WindowModeDropdown
@@ -27,7 +20,7 @@ signal language_changed(language: String)
 var user_prefs:UserPrefs
 
 func _ready():
-	for res in Globals.window_resolutions:
+	for res in DisplayManager.window_resolutions:
 		window_resolution_dropdown.add_item("%dx%d" % [res.x, res.y])
 	
 	for screen_idx in range(DisplayServer.get_screen_count()):
@@ -86,8 +79,8 @@ func _on_window_mode_option_selected(_value):
 	Globals.display_manager.set_window_mode(_value)
 
 func _on_window_resolution_option_selected(_value):
-	user_prefs.window_resolution = Globals.window_resolutions[_value]
-	Globals.display_manager.set_window_resolution(Globals.window_resolutions[_value])
+	user_prefs.window_resolution = DisplayManager.window_resolutions[_value]
+	Globals.display_manager.set_window_resolution(DisplayManager.window_resolutions[_value])
 
 func _on_monitor_option_selected(_value: int):
 	user_prefs.window_monitor = _value
