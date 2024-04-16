@@ -11,6 +11,7 @@ var save:SaveData
 # temp - I'm not wild about preloads, but this menu is fairly light (to revise in a future version)
 var settings_menu_scene:PackedScene = preload("res://Menus/settings_menu.tscn")
 var settings_menu = null
+var display_manager: DisplayManager
  
 # available window resolutions
 # perhaps this should be an export on a node for easier management
@@ -23,9 +24,13 @@ var window_resolutions: Array[Vector2i] = [
 ]
 
 func _ready():
+	# setup so that we can intercept quit
 	get_tree().set_auto_accept_quit(false)
+	
 	user_prefs = UserPrefs.load_or_create()
 	game_info = GameInfo.load_or_create()
+	
+	display_manager = DisplayManager.new()
 	
 	# SaveData extends JSONLoader to add methods to read and write data specifically for this game
 	# customize SaveData to fit your game. What's in this repo is just a very basic example.
@@ -41,9 +46,6 @@ func _ready():
 	AudioServer.set_bus_mute(SFX_BUS_ID, user_prefs.sfx_volume < .05)
 	AudioServer.set_bus_volume_db(MUSIC_BUS_ID, linear_to_db(user_prefs.music_volume))
 	AudioServer.set_bus_mute(MUSIC_BUS_ID, user_prefs.music_volume < .05)
-	set_window_mode(user_prefs.window_mode)
-	set_window_resolution(user_prefs.window_resolution)
-	set_monitor(user_prefs.window_monitor)
 
 enum GLOBAL_STATE {
 	MAIN_MENU,
@@ -71,26 +73,12 @@ func open_settings_menu():
 	else:
 		push_warning('settings menu already exists in this scene')
 
-func set_window_mode(_value: int):
-	match(_value):
-		0:
-			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-		1:
-			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
-		2:
-			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-
-func set_window_resolution(_resolution: Vector2i):
-	DisplayServer.window_set_size(_resolution)
-
-func set_monitor(_monitor: int):
-	DisplayServer.window_set_current_screen(_monitor)
-
-func save_game_info():
-	game_info.last_window_position = DisplayServer.window_get_position()
-	game_info.save()
+func quit():
+	# todo add confirmation dialog before quitting
+	display_manager.save_window()
+	get_tree().quit() # default behavior
 
 func _notification(what):
+	# intercept window manager quit
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
-		save_game_info()
-		get_tree().quit() # default behavior
+		quit()

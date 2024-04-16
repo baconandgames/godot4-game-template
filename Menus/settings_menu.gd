@@ -83,15 +83,15 @@ func _on_quit_button_pressed():
 
 func _on_window_mode_option_selected(_value):
 	user_prefs.window_mode = _value
-	Globals.set_window_mode(_value)
+	Globals.display_manager.set_window_mode(_value)
 
 func _on_window_resolution_option_selected(_value):
 	user_prefs.window_resolution = Globals.window_resolutions[_value]
-	Globals.set_window_resolution(Globals.window_resolutions[_value])
+	Globals.display_manager.set_window_resolution(Globals.window_resolutions[_value])
 
 func _on_monitor_option_selected(_value: int):
 	user_prefs.window_monitor = _value
-	Globals.set_monitor(_value)
+	Globals.display_manager.set_monitor(_value)
 
 func _on_music_slider_value_changed(_value):
 	AudioServer.set_bus_volume_db(MUSIC_BUS_ID, linear_to_db(_value))
