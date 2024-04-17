@@ -1,14 +1,25 @@
-This document is very WIP at the moment but for right now, here's the status. Since I've had a couple people asking to contribute code (no you're breathtaking!) I wanted to put some basic guidelines out there. I'm looking at using the Gitflow model (or at least a simplified version of it... read more here: https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow
+Welcome fellow Godot developers! This Godot Game Template is very much a work in progress but that doesn’t mean it can’t still do plenty of heavy lifting for you. Here is some info to get you started.
 
-BRANCHES
-Main - for major releases (production)
-Develop - in progress features
-Feature-FEATURENAME - I'm asking that folks who would like to contribute create a feature branch off Develop and then submit a Pull Request when that feature is ready. 
+## Current Version: v0.1 (developed in Godot 4.2.1)
 
-Of course, if you just want to fork the project for yourself, by all means have at it :)
+- Settings Menu w/ built in saving via UserPrefs class (incdlues: Volume and Music sliders, Dropdown for languages, Dropdown for screen resolutions, monitor selection, and fullscreen toggle - these display options will be toggled off if on mobile/web and certain options not available on Mac will only show when on PC
+- SceneManager autoload (handles: loading scenes, displaying transitions, displaying loading progress, protocol for passing data between loaded/unloaded scenes)
+- Simple JSON save system - extend to suit your game’s needs
+- Start screen template and a few other minor bells and whistles
 
-Turth be told, I wasn't expecting folks to want to contribute to this project at all, certainly no so quickly. So I'm in the process of scrambling to give this project the strucutre and guidelines contributors (and users deserve).
+## Get the Template
+You will find three categories of branches
 
-For those who arrived here through my YouTube channel (https://www.youtube.com/watch?v=tNqFLmbWW-Y) the plan hasn't changed. I'll still be holding new features in batches and pushing them along with a video explaining the additions, followed by a small game made with the latest version of this template. The only difference is that those vidoes may now include code from the community which comes with some (very welcomed) overhead.
+1. main - production ready code (only one branch)
+2. develop - unreleased features, potentially unstable (only one branch)
+3. feature - new feature in development (could be any number of these at a given time)
 
-Special thanks to Fritzy and Braydee (of GameDev Artisan: https://www.youtube.com/@GameDevArtisan) who have both been very generous with their time advising me on best practices for this setup. And many thanks to you for your patience while I take a slight detour to the land of open source project management. <3
+If you just want stable code to use in your project, it’s recommended you fork the main branch OR if you prefer to leave git out it you’re welcome to download a zip of the main branch (click the down arrow next to the Code button above OR grab the latest release from the right margin of this page)
+
+If you are looking to contribute, please have a look at the [CONTRIBUTING.md](https://github.com/baconandgames/godot4-game-template/blob/main/CONTRIBUTING.md) file for guidelines.
+
+## Found a Bug or Want to Request a Feature?
+Open an issue [here](https://github.com/baconandgames/godot4-game-template/issues) and tag it as a bug or feature-request. Please be as descriptive as possible. Alternatively, hop on over to [Discord](https://discord.gg/UYaWZAdf) and let us know in the game-template channel what’s on your mind :) 
+
+## Feature Roadmap
+The list of features to be added will remain a moving target as I/we figure out what features to add in what order. That list is maintained over on the [CONTRIBUTING.md](https://github.com/baconandgames/godot4-game-template/blob/main/CONTRIBUTING.md) file as well under the same heading. 
