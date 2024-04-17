@@ -4,15 +4,23 @@ extends Node
 @onready var MUSIC_BUS_ID = AudioServer.get_bus_index("Music")
 
 var user_prefs:UserPrefs
+var game_info: GameInfo
 var save:SaveData
 #var user_save:UserSave
 
 # temp - I'm not wild about preloads, but this menu is fairly light (to revise in a future version)
 var settings_menu_scene:PackedScene = preload("res://Menus/settings_menu.tscn")
 var settings_menu = null
- 
+var display_manager: DisplayManager
+
 func _ready():
+	# setup so that we can intercept quit
+	get_tree().set_auto_accept_quit(false)
+	
 	user_prefs = UserPrefs.load_or_create()
+	game_info = GameInfo.load_or_create()
+	
+	display_manager = DisplayManager.new()
 	
 	# SaveData extends JSONLoader to add methods to read and write data specifically for this game
 	# customize SaveData to fit your game. What's in this repo is just a very basic example.
@@ -54,3 +62,13 @@ func open_settings_menu():
 		get_tree().root.add_child(settings_menu)
 	else:
 		push_warning('settings menu already exists in this scene')
+
+func quit():
+	# todo add confirmation dialog before quitting
+	display_manager.save_window()
+	get_tree().quit() # default behavior
+
+func _notification(what):
+	# intercept window manager quit
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		quit()

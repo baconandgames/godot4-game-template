@@ -15,5 +15,4 @@ func _on_settings_button_up() -> void:
 	Globals.open_settings_menu()
 
 func _on_quit_button_up() -> void:
-	# todo add confirmation dialog before quitting
-	get_tree().quit()
+	Globals.quit()
