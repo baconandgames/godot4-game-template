@@ -14,12 +14,20 @@ signal language_changed(language: String)
 @onready var close_button:Button = %CloseButton as Button
 @onready var save_button:Button = %SaveButton as Button
 @onready var quit_button:Button = %QuitButton as Button
+@onready var settings_tabs:TabContainer = %SettingsTabs
 @onready var SFX_BUS_ID = AudioServer.get_bus_index("SFX")
 @onready var MUSIC_BUS_ID = AudioServer.get_bus_index("Music")
 
 var user_prefs:UserPrefs
 
 func _ready():
+	if OS.get_name() in ["Web", "iOS", "Android"]:
+		# Display settings don't work for Web and Mobile
+		settings_tabs.set_tab_disabled(1, true)
+	elif OS.get_name() == "macOS":
+		# MacOS borderless fullscreen behaves the same as fullscreen
+		window_mode_dropdown.remove_item(2)
+	
 	for res in DisplayManager.window_resolutions:
 		window_resolution_dropdown.add_item("%dx%d" % [res.x, res.y])
 	
