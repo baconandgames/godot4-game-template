@@ -19,7 +19,7 @@ If you just want stable code to use in your project, it’s recommended you fork
 If you are looking to contribute, please have a look at the [CONTRIBUTING.md](https://github.com/baconandgames/godot4-game-template/blob/main/CONTRIBUTING.md) file for guidelines.
 
 ## Found a Bug or Want to Request a Feature?
-Open an issue [here](https://github.com/baconandgames/godot4-game-template/issues) and tag it as a bug or feature-request. Please be as descriptive as possible. Alternatively, hop on over to [Discord](https://discord.gg/UYaWZAdf) and let us know in the game-template channel what’s on your mind :) 
+Open an issue [here](https://github.com/baconandgames/godot4-game-template/issues) and tag it as a bug or feature-request. Please be as descriptive as possible. Alternatively, hop on over to [Discord](https://discord.gg/JVxRsbCvdb) and let us know in the game-template channel what’s on your mind :) 
 
 ## Feature Roadmap
 The list of features to be added will remain a moving target as I/we figure out what features to add in what order. That list is maintained over on the [CONTRIBUTING.md](https://github.com/baconandgames/godot4-game-template/blob/main/CONTRIBUTING.md) file as well under the same heading. 
