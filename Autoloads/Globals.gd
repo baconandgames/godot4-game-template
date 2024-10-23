@@ -52,5 +52,7 @@ func open_settings_menu():
 	if not settings_menu:
 		settings_menu = settings_menu_scene.instantiate()
 		get_tree().root.add_child(settings_menu)
+		settings_menu.top_focus()
+
 	else:
 		push_warning('settings menu already exists in this scene')

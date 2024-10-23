@@ -48,6 +48,9 @@ func _process(_delta):
 		close_settings()
 
 func close_settings():
+	var node = $/root/StartScreen/VBoxContainer/HBoxContainer/GridContainer/Start
+	if node:
+		node.grab_focus()
 	queue_free()
 
 func _on_close_button_pressed():
@@ -88,3 +91,6 @@ func _notification(what):
 		NOTIFICATION_EXIT_TREE:
 			user_prefs.save()
 			get_tree().paused = false
+			
+func top_focus():
+	music_slider.grab_focus()
