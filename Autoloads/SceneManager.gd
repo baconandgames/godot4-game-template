@@ -54,6 +54,9 @@ var _load_scene_into:Node	## internal - Node into which we're loading the new sc
 var _scene_to_unload:Node	## internal - Node we're unloading. In almost all cases, SceneManager will be used to swap between two scenes - after all that it the primary focus. However, passing in [code]null[/code] for the scene to unload will skip the unloading process and simply add the new scene. This isn't recommended, as it can have some adverse affects depending on how it is used, but it does work. Use with caution :)
 var _loading_in_progress:bool = false	## internal - used to block SceneManager from attempting to load two things at the same time
 
+var _loading_screen_scene_v2:PackedScene = preload("res://Menus/loading_screen_v_2.tscn")	## 
+var _next_scene: String = "" ## The value is assigned only to start the scene itself. It is not required in the project
+
 ## Currently only being used to connect to required, internal signals
 func _ready() -> void:
 	_content_invalid.connect(_on_content_invalid)
@@ -254,3 +257,13 @@ func _on_content_finished_loading(incoming_scene) -> void:
 	# load is complete, free up SceneManager to load something else and report load_complete signal
 	_loading_in_progress = false
 	load_complete.emit(incoming_scene)
+
+
+## Perhaps an easier way to transition between scenes. 
+## If desired, you can add the necessary signals.
+func _change_scene(scene_to_load: String) -> void:
+	if scene_to_load == "" or scene_to_load == null:
+		return
+	else:
+		SceneManager._next_scene = scene_to_load
+		get_tree().change_scene_to_packed(SceneManager._loading_screen_scene_v2)
